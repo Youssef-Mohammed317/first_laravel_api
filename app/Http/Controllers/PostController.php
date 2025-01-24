@@ -142,7 +142,8 @@ class PostController extends Controller
     public function getPost($id){
         try{
             // $post = Post::find($id);
-            $post = Post::where('id', $id)->firstOrFail();
+            // $post = Post::where('id', $id)->first();
+            $post = Post::with('user')->where('id', $id)->first(); // get post and user details
             if(!$post){
                 return response()->json([
                     'error' => 'Post not found'

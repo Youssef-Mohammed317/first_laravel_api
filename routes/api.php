@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -21,6 +22,8 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('/edit2/post/{id}',[PostController::class, 'editPost2']);
 
     Route::delete('/delete/post/{id}',[PostController::class, 'deletePost']);
+
+    Route::post('/add/comment',[CommentController::class, 'addNewComment']);
 });
 
 Route::get('/posts', [PostController::class, 'getPosts']);
