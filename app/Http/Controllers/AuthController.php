@@ -52,7 +52,6 @@ class AuthController extends Controller
             return response()->json(['error' => $validated->errors()], 422);
         }
         try{
-
             if(!Auth::attempt($request->all())){
                 return response()->json(['error' => 'Invalid credentials']);
             }
@@ -72,4 +71,10 @@ class AuthController extends Controller
         }
     }
 
+    public function logout(Request $request){
+        $request->user()->currentAccessToken()->delete();
+        return response()->json([
+            'message' => 'user has been logged out successfully'
+        ],200);
+    }
 }
