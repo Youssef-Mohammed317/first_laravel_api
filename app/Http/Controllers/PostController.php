@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SinglePostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -143,7 +144,8 @@ class PostController extends Controller
         try{
             // $post = Post::find($id);
             // $post = Post::where('id', $id)->first();
-            $post = Post::with('user')->where('id', $id)->first(); // get post and user details
+            // $post = Post::with(['user', 'like','comment'])->where('id', $id)->first(); // get post and user details
+            $post = new SinglePostResource(Post::find($id));
             if(!$post){
                 return response()->json([
                     'error' => 'Post not found'

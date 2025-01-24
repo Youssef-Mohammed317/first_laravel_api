@@ -11,4 +11,10 @@ class Comment extends Model
         'post_id',
         'content',
     ];
+    function post(){
+        return $this->belongsTo(Post::class);
+    }
+    function user(){
+        return $this->belongsTo(User::class);
+    }
 }

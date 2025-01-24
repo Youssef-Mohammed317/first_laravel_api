@@ -49,4 +49,10 @@ class User extends Authenticatable
     function post(){
         return $this->hasMany(Post::class);
     }
+    function comment(){
+        return $this->hasMany(Comment::class);
+    }
+    function like(){
+        return $this->hasMany(Like::class);
+    }
 }
