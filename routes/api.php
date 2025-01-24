@@ -15,5 +15,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function(){
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/add/post',[PostController::class, 'addNewPost']);
+    // first method for send id of the post
+    Route::post('/edit/post',[PostController::class, 'editPost']);
 });
 
